@@ -1,9 +1,12 @@
 package lv.tele2.javaschool.phonebook;
 
+import java.io.Serializable;
+
 /**
  * Created by zansdzan on 07.03.2017.
  */
-public class Record {
+public class Record implements Serializable{
+    private static final long serialVersionUID=1L;
     private static int nextId=1;
     private int id;
     private String name;
