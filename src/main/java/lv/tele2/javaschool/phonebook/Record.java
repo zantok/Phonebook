@@ -1,6 +1,9 @@
 package lv.tele2.javaschool.phonebook;
 
+import java.io.IOException;
 import java.io.Serializable;
+
+import static java.lang.System.in;
 
 /**
  * Created by zansdzan on 07.03.2017.
@@ -29,8 +32,10 @@ public class Record implements Serializable{
 
     public Record(String name, String phone, String email){
         this();
+        this.name=name;
         this.phone=phone;
         this.email=email;
+
     }
     public int getId() {
         return id;
@@ -52,7 +57,10 @@ public class Record implements Serializable{
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
+private void readObject(java.io.ObjectInputStream in)
+    throws IOException, ClassNotFoundException{
+    in.defaultReadObject();
+    nextId=Math.max(id+1,nextId);}
     @Override
     public String toString() {
         return "Record{" +
